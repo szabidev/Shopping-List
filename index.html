@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Shopping List</title>
+</head>
+<body>
+    <section class="shopping-list">
+        <h2 class="header">Shopping List</h2>
+        <!-- prevent from submitting and disappearing of items add onsubmit -->
+        <form class="form" onsubmit="return false">
+            <input type="text">
+                    <!-- prevent from submitting and disappearing of items add type='button' -->
+            <button type="button" class="add-item btn">Add Item</button>
+        </form>
+        <div class="btn-container">
+            <button class="btn-asc btn">Sort asc</button>
+            <button class="btn-desc btn">Sort desc</button>
+        </div>
+        <table class="list">
+            <tbody class="tbody">
+
+                <tr>
+                    <th>Item</th>
+                    <th>Action</th>
+                </tr>
+                <!-- <tr>
+                    <td class="shopping-list-item">Bread</td>
+                    <td>
+                    <button class="action-btn btn">Mark as buyed</button>
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
