@@ -13,6 +13,8 @@ let tbody = document.querySelector('.tbody');
 
 let ascBtn = document.querySelector('.btn-asc');
 let descBtn = document.querySelector('.btn-desc');
+
+// let itemsToSort = document.querySelector('.shopping-list-item');
 // let shoppingItems = [];
 
 addItem.addEventListener('click', addItemToList);
@@ -34,6 +36,7 @@ function addItemToList() {
         tableRow.appendChild(firstTableData);
         secondTableData.appendChild(actionBtn)
         tableRow.appendChild(secondTableData);
+        input.value = '';
         // console.log(firstTableData, secondTableData)
         // shoppingItems.push(input.value);
 
@@ -57,26 +60,28 @@ function keyPress(e) {
         tableRow.appendChild(firstTableData);
         secondTableData.appendChild(actionBtn)
         tableRow.appendChild(secondTableData);
-        shoppingItems.push(input.value);
+        input.value = '';
 
     }
 }
 
 table.addEventListener('click', function (e) {
-    console.log(e.target)
-    console.log('this works')
-    let dynamicTd = document.querySelector('.shopping-list-item');
+    // console.log(e.target)
+    // console.log('this works')
+    let dynamicTd = document.querySelectorAll('.shopping-list-item');
     if (e.target && e.target.className == 'action-btn btn') {
-        console.log('this works too');
-        dynamicTd.className = 'checked';
+        // console.log('this works too');
+        const td = e.target.parentNode.parentNode.querySelector("td")
+        if (td) {
+            td.className = "checked";
+        }
 
     }
 })
 
-// function ascend() {
-//     let table = document.querySelector('.list');
-//     let columns;
-//     let switching = true;
+// function ascend(a, b) {
+//     let item = shoppingItems.value;
+//     console.log(item);
 // }
 
 // function descend() {
