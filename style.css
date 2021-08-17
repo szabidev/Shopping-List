@@ -83,3 +83,7 @@
   border-radius: 5px;
   outline: none;
 }
+
+.checked {
+  text-decoration: line-through;
+}

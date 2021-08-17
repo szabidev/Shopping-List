@@ -13,7 +13,7 @@ let tbody = document.querySelector('.tbody');
 
 let ascBtn = document.querySelector('.btn-asc');
 let descBtn = document.querySelector('.btn-desc');
-let shoppingItems = [];
+// let shoppingItems = [];
 
 addItem.addEventListener('click', addItemToList);
 // ascBtn.addEventListener('click', ascend);
@@ -28,13 +28,14 @@ function addItemToList() {
         let actionBtn = document.createElement('button');
         actionBtn.className = 'action-btn btn';
         actionBtn.innerText = 'Mark as buyed';
+        firstTableData.className = 'shopping-list-item';
         tbody.appendChild(tableRow);
         firstTableData.innerHTML = input.value;
         tableRow.appendChild(firstTableData);
         secondTableData.appendChild(actionBtn)
         tableRow.appendChild(secondTableData);
         // console.log(firstTableData, secondTableData)
-        shoppingItems.push(input.value);
+        // shoppingItems.push(input.value);
 
     }
 }
@@ -50,6 +51,7 @@ function keyPress(e) {
         let actionBtn = document.createElement('button');
         actionBtn.className = 'action-btn btn';
         actionBtn.innerText = 'Mark as buyed';
+        firstTableData.className = 'shopping-list-item';
         tbody.appendChild(tableRow);
         firstTableData.innerHTML = input.value;
         tableRow.appendChild(firstTableData);
@@ -62,11 +64,12 @@ function keyPress(e) {
 
 table.addEventListener('click', function (e) {
     console.log(e.target)
-    console.log('worksss')
-    if (e.target && e.target.className == 'action-btn') {
-        console.log('works')
-        // firstTableData.style.textDecoration = 'line-through'
-        // will not work yet it is out of scope
+    console.log('this works')
+    let dynamicTd = document.querySelector('.shopping-list-item');
+    if (e.target && e.target.className == 'action-btn btn') {
+        console.log('this works too');
+        dynamicTd.className = 'checked';
+
     }
 })
 
