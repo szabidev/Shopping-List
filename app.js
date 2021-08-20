@@ -14,12 +14,11 @@ let tbody = document.querySelector('.tbody');
 let ascBtn = document.querySelector('.btn-asc');
 let descBtn = document.querySelector('.btn-desc');
 
-// let itemsToSort = document.querySelector('.shopping-list-item');
-// let shoppingItems = [];
+
 
 addItem.addEventListener('click', addItemToList);
-// ascBtn.addEventListener('click', ascend);
-// descBtn.addEventListener('click', descend);
+ascBtn.addEventListener('click', ascend);
+descBtn.addEventListener('click', descend);
 
 function addItemToList() {
     if (input.value !== '') {
@@ -30,15 +29,13 @@ function addItemToList() {
         let actionBtn = document.createElement('button');
         actionBtn.className = 'action-btn btn';
         actionBtn.innerText = 'Mark as buyed';
-        firstTableData.className = 'shopping-list-item';
+        firstTableData.classList.add('item');
         tbody.appendChild(tableRow);
         firstTableData.innerHTML = input.value;
         tableRow.appendChild(firstTableData);
         secondTableData.appendChild(actionBtn)
         tableRow.appendChild(secondTableData);
         input.value = '';
-        // console.log(firstTableData, secondTableData)
-        // shoppingItems.push(input.value);
 
     }
 }
@@ -54,7 +51,7 @@ function keyPress(e) {
         let actionBtn = document.createElement('button');
         actionBtn.className = 'action-btn btn';
         actionBtn.innerText = 'Mark as buyed';
-        firstTableData.className = 'shopping-list-item';
+        firstTableData.classList.add('item');
         tbody.appendChild(tableRow);
         firstTableData.innerHTML = input.value;
         tableRow.appendChild(firstTableData);
@@ -68,22 +65,36 @@ function keyPress(e) {
 table.addEventListener('click', function (e) {
     // console.log(e.target)
     // console.log('this works')
-    let dynamicTd = document.querySelectorAll('.shopping-list-item');
     if (e.target && e.target.className == 'action-btn btn') {
         // console.log('this works too');
-        const td = e.target.parentNode.parentNode.querySelector("td")
+        const td = e.target.parentNode.parentNode.querySelector("td");
         if (td) {
-            td.className = "checked";
+            td.classList.add('checked');
         }
 
     }
 })
 
-// function ascend(a, b) {
-//     let item = shoppingItems.value;
-//     console.log(item);
-// }
+function ascend() {
+    let itemsToSort = document.querySelectorAll('.item');
+    let shoppingItems = [];
+    // console.log(itemsToSort);
+    itemsToSort.forEach(item => shoppingItems.push(item.innerText));
+    // console.log(shoppingItems);
+    let ascending = shoppingItems.sort((a, b) => a - b);
+    // console.log(ascending);
+    // console.log(itemsToSort);
+    itemsToSort.forEach((item, i) => {
+        item.innerText = ascending[i];
+    })
+}
 
-// function descend() {
-
-// }
+function descend() {
+    let sortDescend = document.querySelectorAll('.item');
+    let shoppingItems2 = [];
+    sortDescend.forEach(item => shoppingItems2.push(item.innerText));
+    let descending = shoppingItems2.sort((a, b) => b - a);
+    sortDescend.forEach((item, i) => {
+        item.innerText = descending[i];
+    })
+}
